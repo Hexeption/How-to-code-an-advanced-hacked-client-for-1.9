@@ -1,6 +1,10 @@
 package net.minecraft.client.renderer.tileentity;
 
 import java.util.Calendar;
+
+import me.hexeption.Cryton.Cryton;
+import me.hexeption.Cryton.module.modules.ChestOutlineESP;
+import me.hexeption.Cryton.utils.OutlineUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.client.model.ModelChest;
@@ -184,6 +188,19 @@ public class TileEntityChestRenderer extends TileEntitySpecialRenderer<TileEntit
             f = 1.0F - f * f * f;
             modelchest.chestLid.rotateAngleX = -(f * ((float)Math.PI / 2F));
             modelchest.renderAll();
+            
+            if(Cryton.getInstance().getModuleManager().getModule(ChestOutlineESP.class).getState()){
+            	modelchest.renderAll();
+            	OutlineUtils.renderOne();
+            	modelchest.renderAll();
+            	OutlineUtils.renderTwo();
+            	modelchest.renderAll();
+            	OutlineUtils.renderThree();
+            	OutlineUtils.renderFour();
+            	modelchest.renderAll();
+            	OutlineUtils.renderFive();
+            }
+            
             GlStateManager.disableRescaleNormal();
             GlStateManager.popMatrix();
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

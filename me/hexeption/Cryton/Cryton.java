@@ -1,5 +1,8 @@
 package me.hexeption.Cryton;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import me.hexeption.Cryton.module.Module;
 import me.hexeption.Cryton.module.ModuleManager;
 import me.hexeption.Cryton.wrapper.Wrapper;
@@ -13,6 +16,7 @@ public class Cryton {
 	private static Cryton theClient = new Cryton();
 	
 	private static ModuleManager moduleManager = null;
+	public static Logger logger = LogManager.getLogger();
 	
 	public static Cryton getInstance(){
 		return theClient;
@@ -46,6 +50,12 @@ public class Cryton {
 	public static ModuleManager getModuleManager() {
 		return moduleManager;
 	}
+
+	public static Logger getLogger() {
+		return logger;
+	}
+	
+	
 	
 	
 	

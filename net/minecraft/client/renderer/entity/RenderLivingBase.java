@@ -1,6 +1,12 @@
 package net.minecraft.client.renderer.entity;
 
 import com.google.common.collect.Lists;
+
+import me.hexeption.Cryton.Cryton;
+import me.hexeption.Cryton.module.modules.OutlineESP;
+import me.hexeption.Cryton.utils.OutlineUtils;
+import me.hexeption.Cryton.wrapper.Wrapper;
+
 import java.nio.FloatBuffer;
 import java.util.List;
 import net.minecraft.client.Minecraft;
@@ -174,7 +180,31 @@ public abstract class RenderLivingBase<T extends EntityLivingBase> extends Rende
             else
             {
                 boolean flag = this.setDoRenderBrightness(entity, partialTicks);
-                this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+                
+				if (Cryton.getInstance().getModuleManager().getModule(OutlineESP.class).getState()) {
+					GlStateManager.depthMask(true);
+					if (!(entity instanceof EntityPlayer) || !((EntityPlayer) entity).isSpectator()) {
+						this.renderLayers(entity, f6, f5, partialTicks, f8, f2, f7, f4);
+					}
+					
+					if(entity instanceof EntityPlayer){
+						if(entity != Wrapper.getInstance().getPlayer()){
+							this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+							OutlineUtils.renderOne();
+							this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+							OutlineUtils.renderTwo();
+							this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+							OutlineUtils.renderThree();
+							OutlineUtils.renderFour();
+							this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+							OutlineUtils.renderFive();
+						}
+					}else{
+						this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+					}
+				}else{
+					this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+				}
 
                 if (flag)
                 {

@@ -1,5 +1,8 @@
 package net.minecraft.client.renderer.tileentity;
 
+import me.hexeption.Cryton.Cryton;
+import me.hexeption.Cryton.module.modules.ChestOutlineESP;
+import me.hexeption.Cryton.utils.OutlineUtils;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.tileentity.TileEntityEnderChest;
@@ -68,6 +71,19 @@ public class TileEntityEnderChestRenderer extends TileEntitySpecialRenderer<Tile
         f = 1.0F - f * f * f;
         this.field_147521_c.chestLid.rotateAngleX = -(f * ((float)Math.PI / 2F));
         this.field_147521_c.renderAll();
+        
+        if(Cryton.getInstance().getModuleManager().getModule(ChestOutlineESP.class).getState()){
+        	field_147521_c.renderAll();
+        	OutlineUtils.renderOne();
+        	field_147521_c.renderAll();
+        	OutlineUtils.renderTwo();
+        	field_147521_c.renderAll();
+        	OutlineUtils.renderThree();
+        	OutlineUtils.renderFour();
+        	field_147521_c.renderAll();
+        	OutlineUtils.renderFive();
+        }
+        
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

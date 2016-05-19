@@ -8,6 +8,9 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.InsecureTextureException;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
+
+import me.hexeption.Cryton.cape.Capes;
+
 import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -127,6 +130,9 @@ public class SkinManager
                     profile.getProperties().putAll(Minecraft.getMinecraft().getProfileProperties());
                     map.putAll(SkinManager.this.sessionService.getTextures(profile, false));
                 }
+                
+                //TODO: Cryton
+                Capes.GetCapes(profile, map, skinAvailableCallback);
 
                 Minecraft.getMinecraft().addScheduledTask(new Runnable()
                 {
