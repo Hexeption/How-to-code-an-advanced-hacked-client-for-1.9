@@ -1,20 +1,20 @@
 /*
- * Copyright © 2016 | Hexeption & TheCyberBrick | Innocent All rights reserved.
+ * Copyright Â© 2016 | Hexeption & TheCyberBrick | Innocent All rights reserved.
  *
  */
-package com.hexeption.hypno.Innocent.utils;
+package me.hexeption.Cryton.utils;
 
-import java.awt.*;
+import java.awt.Color;
 
-import net.minecraft.client.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.client.shader.*;
+import org.lwjgl.opengl.EXTFramebufferObject;
+import org.lwjgl.opengl.EXTPackedDepthStencil;
+import org.lwjgl.opengl.GL11;
 
-import org.lwjgl.opengl.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.shader.Framebuffer;
 
-import com.hexeption.hypno.Innocent.*;
-
-public class OutLineUtils
+public class OutlineUtils
 {
     public static void renderOne()
     {
@@ -51,7 +51,7 @@ public class OutLineUtils
 
     public static void renderFour()
     {
-        setColor(Innocent.getInstance().getColor());
+        setColor(new Color(255, 255, 255));
         GL11.glDepthMask(false);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_POLYGON_OFFSET_LINE);
