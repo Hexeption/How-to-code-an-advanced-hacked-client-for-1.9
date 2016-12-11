@@ -1,4 +1,4 @@
-# How To Code An Advanced Hacked Client For 1.9
+# How To Code An Advanced Hacked Client For 1.9 (Discontinued)
 
 MCP:
 [MCP](https://twitter.com/SeargeDP/status/705970418486788096)
