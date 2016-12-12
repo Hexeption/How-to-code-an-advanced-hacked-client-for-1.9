@@ -15,26 +15,32 @@ public class SimpleStep extends Module{
 	public SimpleStep() {
 		super("Simple Step", "", Keyboard.KEY_P, Category.MOVEMENT);
 	}
-	
-	@Override
+@Override
 	public void onEnable() {
 		EventManager.register(this);
 		super.onEnable();
+	//fix
+		Wrapper.getInstance().getPlayer().stepHeight = 1F;
 	}
 	
 	@Override
 	public void onDisable() {
 		EventManager.unregister(this);
 		super.onDisable();
+	//fix
+		Wrapper.getInstance().getPlayer().stepHeight = 0.5F;
 	}
 	
 	@EventTarget
 	public void onUpdate(EventUpdate event){
 		if(this.getState()){
-			Wrapper.getInstance().getPlayer().stepHeight = 1f;
+			// doesnt work: Wrapper.getInstance().getPlayer().stepHeight = 1F;
+		
 		}else{
-			Wrapper.getInstance().getPlayer().stepHeight = 0.5f;
+			// doesnt work: Wrapper.getInstance().getPlayer().stepHeight = 0.5F;
+	
 		}
 	}
-
+	
 }
+
